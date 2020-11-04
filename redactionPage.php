@@ -16,7 +16,7 @@
 <body>
     <div class="box">
         <h2> Rédaction d'une nouvelle</h2>
-        <form method="POST" action="pageRedaction.php" enctype="multipart/form-data">
+        <form method="POST" action="addNews.php" enctype="multipart/form-data">
 
             <div class="inputBox">
                 <input type='text' name='titre' value="" required="required"

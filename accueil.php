@@ -29,11 +29,11 @@
             <?php
     if(isset($_SESSION['id'])){
         echo"<a  onClick='confirmation()'>Déconnexion</a>
-        <a  href='pageRedaction1.php'>Page de rédaction </a>";
+        <a  href='redactionPage.php'>Page de rédaction </a>";
     }
     else{
-        echo"<a href='connexion.html'> Connexion</a>
-        <a ' href='creationUnCompte.html'> Créer un compte de rédacteur </a>";
+        echo"<a href='connexionPage.html'> Connexion</a>
+        <a ' href='newComptePage.html'> Créer un compte de rédacteur </a>";
     }
     ?>
         </ul>

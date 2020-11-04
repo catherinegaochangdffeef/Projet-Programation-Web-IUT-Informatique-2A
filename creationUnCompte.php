@@ -34,12 +34,13 @@ if($query = $objPdo->query($sqlv)){
 		}
 		else
 		{
-			echo"<script type='text/javascript'>alert('Création échoué!'); location='creationUnCompte.html';</script>";  
+			echo"<script type='text/javascript'>alert('Création échoué!'); location='newComptePage.html';</script>";  
 		}
 		
 	}
+	// Verification si le mail a déjà été utilisé et le cas échéant refuser la création 
 	else{
-		echo "<script> alert('Cette adress email est déjà utilisé! Veuillez saisir une nouvelle adresse!!');parent.location.href='creationUnCompte.html'; </script>"; 
+		echo "<script> alert('Cette adress email est déjà utilisé! Veuillez saisir une nouvelle adresse!!');parent.location.href='newComptePage.html'; </script>"; 
 	}
 }
 

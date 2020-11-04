@@ -23,7 +23,7 @@ $count=$stmt->execute();
       }
       else
       {
-          echo"<script type='text/javascript'>alert('Création échoué!'); location='pageRedaction.html';</script>";  
+          echo"<script type='text/javascript'>alert('Création échoué!'); location='redactionPage.php';</script>";  
       }
        
 
