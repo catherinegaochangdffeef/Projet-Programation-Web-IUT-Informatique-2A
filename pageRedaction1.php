@@ -4,6 +4,13 @@
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
     <title>Créer un compte de rédacteur </title>
     <link href="style1.css" rel="stylesheet" type="text/css" />
+    <?php
+    include_once "connexionbdd.php";
+    session_start();
+    if (!isset($_SESSION['id'])){
+	header('Location: accueil.php');
+    }
+    ?>
 </head>
 
 <body>
@@ -18,10 +25,13 @@
             <div class="theme">
                 <label> Le thème de la nouvelle: </label><br>
                 <select style="color:white" name="theme" id="theme">
-                    <option value="none" selected disabled hidden>Thème</option>
-                    <option value="Crime">Crime</option>
-                    <option value="Voyage">Voyage</option>
-                    <option value="Commerce">Commerce</option>
+                <?php
+                    $result = $objPdo->query('select * from theme') ;
+                    while ($row=$result->fetch()){
+	                    echo "<option value=" . $row['idtheme'].">" . $row['description'];
+                        }
+                        $result->closeCursor() ;
+                        ?>
                 </select>
             </div>
 

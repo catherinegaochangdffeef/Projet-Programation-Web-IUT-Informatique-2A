@@ -73,11 +73,12 @@ nav ul a{
     cursor: pointer;
     border-radius: 500px;
 
-	
-	
+
 	
 }
-
+nav ul{
+	text-align: center;
+}
 nav ul a:hover{
 	color: white;
 	background-color: midnightblue;
