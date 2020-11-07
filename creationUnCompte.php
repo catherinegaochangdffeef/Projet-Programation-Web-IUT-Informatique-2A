@@ -1,22 +1,12 @@
 <?php
+include 'connexionbdd.php';
+session_start();
 $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
 $email = $_POST['email'];
 $mdp = $_POST['mdp'];
 
-
-
-$db_config=array();
-$db_config['SGBD']='mysql';
-$db_config['HOST']='devbdd.iutmetz.univ-lorraine.fr';
-$db_config['DB_NAME']='gao38u_php';
-$db_config['USER']='gao38u_appli';
-$db_config['PASSWORD']='2017qq2017';
-
 try{
-$objPdo = new PDO ($db_config['SGBD'].':host='.$db_config['HOST'].';dbname='.$db_config['DB_NAME'],
-$db_config['USER'], $db_config['PASSWORD']);
-
 $sqlv="SELECT adressemail FROM redacteur WHERE adressemail='$email' ";
 if($query = $objPdo->query($sqlv)){
 	if($query->rowCount()<1){
@@ -29,24 +19,43 @@ if($query = $objPdo->query($sqlv)){
 		$stmt->bindValue(5,$mdp);
 		$count=$stmt->execute();
 		if($count<>0){
-			echo"<script type='text/javascript'>alert('Création réussi !');location='accueil.php';</script>";  
+			
 					
+
+			try{
+				$req=$objPdo->prepare("select * from redacteur where nom=? and prenom=?");
+					$req->bindValue(1, $nom, PDO::PARAM_STR);
+					$req->bindValue(2, $prenom, PDO::PARAM_STR);
+					//strip_tags, eviter l'injection, PHP htmlentites()
+				$req->execute();
+				if($row=$req->fetch()){
+					$_SESSION['id']=$row['idredacteur'];
+					$_SESSION['prenom']=$row['prenom'];
+					$_SESSION['nom']=$row['nom'];
+				}
+				else{
+					echo "<script>history.go(-1);alert('mdp erreur');</script>";
+				}
+			}
+			catch(Exception $e){
+				echo $e->getMessage();
+			}
+
+			echo"<script type='text/javascript'>alert('Création réussi !');location='accueil.php';</script>";  
+
+
 		}
 		else
 		{
-			echo"<script type='text/javascript'>alert('Création échoué!'); location='newComptePage.html';</script>";  
+			echo"<script type='text/javascript'>alert('Création échoué!'); location='newComptePage.php';</script>";  
 		}
 		
 	}
 	// Verification si le mail a déjà été utilisé et le cas échéant refuser la création 
 	else{
-		echo "<script> alert('Cette adress email est déjà utilisé! Veuillez saisir une nouvelle adresse!!');parent.location.href='newComptePage.html'; </script>"; 
+		echo "<script> alert('Cette adress email est déjà utilisé! Veuillez saisir une nouvelle adresse!!');parent.location.href='newComptePage.php'; </script>"; 
 	}
 }
-
-$stmt =null;
-$objPdo = null;
-
     }catch(Exception $exception){
         die($exception->getMessage());
 	}

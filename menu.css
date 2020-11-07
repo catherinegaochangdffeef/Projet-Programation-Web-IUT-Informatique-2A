@@ -100,10 +100,21 @@ article input:hover{
 	color: white;
 	background-color: midnightblue;
 }
-.Bien{
+.utilisateur{
 	text-align: center;
 }
 footer{
 	text-align: center;
 	margin: auto;
+}
+
+
+img.image1 {
+	width:13%;
+	height:20%;
+	position:fixed;
+	bottom:40%;
+	right:0px;
+	border-radius: 200px;
+
 }

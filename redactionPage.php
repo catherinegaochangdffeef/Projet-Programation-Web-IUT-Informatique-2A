@@ -39,7 +39,7 @@
                 <label class="text">Text:</label><br>
 
                 <textarea style="width:500px;height:200px;" name='text' value="" required="required"
-                    placeholder="           saisir votre text"></textarea></div>
+                    placeholder="           saisir votre texte"></textarea></div>
 
             <input type='submit' value='valider' name="submit"></input>
             <input type='button' value='annuler' name="annuler"

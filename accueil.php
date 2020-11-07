@@ -23,7 +23,9 @@
     </script>
 </head>
 <header>
+
     <h1>Les dernières actualités</h1>
+   
     <nav>
         <ul>
             <?php
@@ -33,22 +35,26 @@
     }
     else{
         echo"<a href='connexionPage.html'> Connexion</a>
-        <a ' href='newComptePage.html'> Créer un compte de rédacteur </a>";
+        <a ' href='newComptePage.php'> Créer un compte de rédacteur </a>";
     }
     ?>
         </ul>
     </nav>
+  
 </header>
 
 
 <body>
 
     <section>
+   
         <article>
-        <div class="Bien">
+        <div class="utilisateur">
+      
         <?php
         if(isset($_SESSION['id'])){
 	            echo "Bienvenue ".$_SESSION['prenom']." ".$_SESSION['nom']."<br>";
+                echo" <div class='run'>  </div>";
             }
             ?>
         </div>
@@ -69,6 +75,7 @@
             </form>
         </article>
         <br>
+        
         <?php
         if(isset($_POST['tri'])&&$_POST['tri']==1){
             $requete="
@@ -114,8 +121,11 @@
         ?>
 
     </section>
+ 
 </body>
 
+        <img src="image/surf.gif"alt="icon" class="image1">
+     
 <footer>
     <p>©2020 GAO Chang DUT Informatique</p>
 </footer>
